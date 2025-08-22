@@ -198,7 +198,7 @@ select Shifts,COUNT(1) as Total_Orders from shifts
 group by Shifts
 
 -- END OF PROJECT
-
+```
 
 ## Findings
 
@@ -229,3 +229,4 @@ This project is part of my portfolio, showcasing the SQL skills essential for da
 ### Stay Updated and Join the Community
 
 Thank you for your support, and I look forward to connecting with you!
+
