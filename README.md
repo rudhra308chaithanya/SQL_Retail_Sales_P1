@@ -111,12 +111,12 @@ select count(DISTINCT category) total_category from Retail_Sales
 -- Data Analysis, Business Key Problems and Solutions
 ```
 **-- Q1) Write a SQL QUery to retrive all the records for the sales made on 2022-11-05:**
-```
+```sql
 select * from Retail_Sales where sale_date='2022-11-05'
 ```
-**-- Q2) Write a SQL Queeery to retrive all the transactions where the category is 'Clothing' **
-```
---and the quantity sold is more than 3 in the month of Nov-2022
+**-- Q2) Write a SQL Queeery to retrive all the transactions where the category is 'Clothing' 
+--and the quantity sold is more than 3 in the month of Nov-2022**
+```sql
 
 select * 
 from Retail_Sales 
@@ -124,7 +124,7 @@ where category='Clothing'
 and FORMAT(sale_date,'MM-yyyy')='11-2022' and quantity>3
 ```
 **-- Q3) Write a SQL Query to calculate the total sales(total_sales) for each category**
-```
+```sql
 select 
 category
 ,SUM(total_sale) as total_sales
@@ -134,24 +134,24 @@ Retail_Sales
 group by category
 ```
 **-- Q4) Write a SQL Query to find the average age of customers who purchased items from the 'Beauty' category**
-```
+```sql
 select AVG(age) as average_age from Retail_Sales
 where category='Beauty'
 ```
 **-- Q5) Write a SQL QUeery to find all transactions where total sales is greater than 1000**
-```
+```sql
 select * from Retail_Sales
 where total_sale>1000
 ```
 **-- Q6) Write a SQL Query to find the total number of transactions (transaction_id) made by each gender 
 --in each category**
-```
+```sql
 select gender,category,COUNT(1) total_Transactions  from Retail_Sales
 group by gender,category
 order by gender,category
 ```
 **-- Q7) Write a sQL query to calculate the average sale for each month. FInd out best selling month in each year**
-```
+```sql
 select Month,Year,average_sale from (
 select FORMAT(sale_date,'yyyy') as Year,FORMAT(sale_date,'MM') as Month,AVG(total_sale) as average_sale 
 , RANK() OVER (Partition by FORMAT(sale_date,'yyyy') order by AVG(total_sale) desc) T_Rank
@@ -161,7 +161,7 @@ group by FORMAT(sale_date,'yyyy'),FORMAT(sale_date,'MM')
 where T_Rank=1
 ```
 **-- Q8) Write a SQL Query to find the top 5 customers based on the highest total sales**
-```
+```sql
 select TOP 5 customer_id,SUM(total_sale) as Tot_Sale from Retail_Sales
 group by customer_id
 order by Tot_Sale Desc
@@ -176,12 +176,12 @@ group by customer_id
 where T_Rank<=5
 ```
 **-- Q9) Write a SQL Query to find the number of unique customers who purchased items from each category**
-```
+```sql
 select category,COUNT(distinct customer_id) as u_customer from Retail_Sales
 group by category
 ```
 **-- Q10) Write a SQL Query to create each shift and number of orders (Example Morning <=12, Afternoon between 12 and 17, Evening > 17)**
-```
+```sql
 
 ;with shifts as (
 select 
@@ -230,5 +230,6 @@ This project is part of my portfolio, showcasing the SQL skills essential for da
 ### Stay Updated and Join the Community
 
 Thank you for your support, and I look forward to connecting with you!
+
 
 
